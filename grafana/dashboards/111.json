@@ -20,6 +20,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 2129,
   "graphTooltip": 1,
+  "id": 6,
   "links": [],
   "panels": [
     {
@@ -1223,11 +1224,7 @@
   ],
   "refresh": "10s",
   "schemaVersion": 39,
-  "tags": [
-    "windows",
-    "wmi_exporter",
-    "prometheus"
-  ],
+  "tags": [],
   "templating": {
     "list": [
       {
@@ -1256,21 +1253,24 @@
       },
       {
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "223.169.100.101:9182",
+          "value": "223.169.100.101:9182"
         },
-        "definition": "label_values($instance)",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "definition": "label_values(instance)",
         "hide": 0,
         "includeAll": false,
         "label": "Server",
         "multi": false,
-        "name": "instance",
+        "name": "server",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values($instance)",
+          "query": "label_values(instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1311,8 +1311,8 @@
     ]
   },
   "timezone": "browser",
-  "title": "Windows Node",
-  "uid": "fdezfavuolrswb",
-  "version": 1,
+  "title": "Windows Node Copy",
+  "uid": "fdezi5hdhp2wwc",
+  "version": 2,
   "weekStart": ""
 }
