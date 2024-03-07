@@ -15,12 +15,11 @@
       }
     ]
   },
-  "description": "General stats dashboard with node selector, uses metrics from wmi_exporter",
+  "description": "General stats dashboard with node selector, uses metrics from windows_exporter",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "gnetId": 2129,
   "graphTooltip": 1,
-  "id": 6,
   "links": [],
   "panels": [
     {
@@ -139,9 +138,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": {},
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -187,7 +184,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "wmi_system_threads{instance=~\"$server\"}",
+          "editorMode": "code",
+          "expr": "windows_system_threads{instance=~\"$server\"}",
           "functions": [],
           "group": {
             "filter": ""
@@ -206,6 +204,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 20
         }
@@ -245,9 +244,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": {},
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -293,7 +290,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "rate(wmi_system_exception_dispatches_total{instance=~\"$server\"}[$interval])",
+          "editorMode": "code",
+          "expr": "rate(windows_system_exception_dispatches_total{instance=~\"$server\"}[$interval])",
           "functions": [],
           "group": {
             "filter": ""
@@ -312,6 +310,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 20
         }
@@ -352,7 +351,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -373,6 +373,8 @@
         "min": false,
         "rightSide": true,
         "show": true,
+        "sort": "max",
+        "sortDesc": false,
         "total": false,
         "values": true
       },
@@ -399,7 +401,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(wmi_net_packets_outbound_discarded{instance=~\"$server\", nic!~\"isatap.+\"}[$interval]) + irate(wmi_net_packets_outbound_errors{instance=~\"$server\"}[$interval])",
+          "editorMode": "code",
+          "expr": "irate(windows_net_packets_outbound_discarded{instance=~\"$server\", nic!~\"isatap.+\"}[$interval]) + irate(windows_net_packets_outbound_errors{instance=~\"$server\"}[$interval])",
           "functions": [],
           "group": {
             "filter": ""
@@ -418,6 +421,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "B",
           "step": 15
         },
@@ -428,7 +432,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(wmi_net_packets_received_discarded{instance=~\"$server\", nic!~\"isatap.+\"}[$interval]) + irate(wmi_net_packets_received_errors{instance=~\"$server\"}[$interval])",
+          "editorMode": "code",
+          "expr": "irate(windows_net_packets_received_discarded{instance=~\"$server\", nic!~\"isatap.+\"}[$interval]) + irate(windows_net_packets_received_errors{instance=~\"$server\"}[$interval])",
           "functions": [],
           "group": {
             "filter": ""
@@ -447,6 +452,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 15
         }
@@ -487,7 +493,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -534,7 +541,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "rate(wmi_net_bytes_sent_total{instance=~\"$server\"}[$interval]) >0",
+          "editorMode": "code",
+          "expr": "rate(windows_net_bytes_sent_total{instance=~\"$server\"}[$interval]) >0",
           "functions": [],
           "group": {
             "filter": ""
@@ -553,6 +561,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "B",
           "step": 10
         },
@@ -563,7 +572,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "- rate(wmi_net_bytes_received_total{instance=~\"$server\"}[$interval]) <0",
+          "editorMode": "code",
+          "expr": "- rate(windows_net_bytes_received_total{instance=~\"$server\"}[$interval]) <0",
           "functions": [],
           "group": {
             "filter": ""
@@ -582,6 +592,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 10
         }
@@ -622,7 +633,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "uid": "${DS_PROMETHEUS}"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fill": 2,
       "fillGradient": 0,
@@ -669,7 +681,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "irate(wmi_logical_disk_write_bytes_total{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}[$interval])",
+          "editorMode": "code",
+          "expr": "irate(windows_logical_disk_write_bytes_total{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}[$interval])",
           "functions": [],
           "group": {
             "filter": ""
@@ -688,6 +701,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 20
         },
@@ -698,7 +712,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "- irate(wmi_logical_disk_read_bytes_total{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}[$interval])",
+          "editorMode": "code",
+          "expr": "- irate(windows_logical_disk_read_bytes_total{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}[$interval])",
           "functions": [],
           "group": {
             "filter": ""
@@ -717,6 +732,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "B",
           "step": 20
         }
@@ -756,9 +772,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": {},
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -804,7 +818,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "rate(wmi_logical_disk_split_ios_total{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}[30s])",
+          "editorMode": "code",
+          "expr": "rate(windows_logical_disk_split_ios_total{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}[30s])",
           "functions": [],
           "group": {
             "filter": ""
@@ -823,6 +838,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 20
         }
@@ -862,9 +878,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": {},
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -910,7 +924,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "wmi_logical_disk_free_bytes{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}",
+          "editorMode": "code",
+          "expr": "windows_logical_disk_free_bytes{instance=~\"$server\", volume !~\"HarddiskVolume.+\"}",
           "functions": [],
           "group": {
             "filter": ""
@@ -929,6 +944,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 20
         }
@@ -969,9 +985,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": {},
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1017,7 +1031,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "wmi_os_virtual_memory_bytes{instance=~\"$server\"}",
+          "editorMode": "code",
+          "expr": "windows_os_virtual_memory_bytes{instance=~\"$server\"}",
           "functions": [],
           "group": {
             "filter": ""
@@ -1036,6 +1051,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 5
         },
@@ -1046,7 +1062,7 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "wmi_cs_physical_memory_bytes{instance=~\"$server\"}",
+          "expr": "windows_cs_physical_memory_bytes{instance=~\"$server\"}",
           "functions": [],
           "group": {
             "filter": ""
@@ -1075,7 +1091,7 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "wmi_os_physical_memory_free_bytes{instance=~\"$server\"}",
+          "expr": "windows_os_physical_memory_free_bytes{instance=~\"$server\"}",
           "functions": [],
           "group": {
             "filter": ""
@@ -1134,16 +1150,18 @@
         "stopped": "#2F575E"
       },
       "bars": false,
-      "datasource": {
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {},
       "fill": 10,
+      "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 24,
         "x": 0,
         "y": 28
       },
+      "hiddenSeries": false,
       "id": 7,
       "legend": {
         "alignAsTable": true,
@@ -1159,11 +1177,16 @@
       "lines": true,
       "linewidth": 0,
       "nullPointMode": "null as zero",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "10.4.0",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
+      "spaceLength": 10,
       "stack": true,
       "steppedLine": false,
       "targets": [
@@ -1174,7 +1197,8 @@
           "datasource": {
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "sum(wmi_service_state{instance=~\"$server\"}) by (state)",
+          "editorMode": "code",
+          "expr": "sum(windows_service_state{instance=~\"$server\"}) by (state)",
           "functions": [],
           "group": {
             "filter": ""
@@ -1191,11 +1215,13 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 5
         }
       ],
       "thresholds": [],
+      "timeRegions": [],
       "title": "Services by state",
       "tooltip": {
         "shared": true,
@@ -1219,7 +1245,10 @@
           "logBase": 1,
           "show": false
         }
-      ]
+      ],
+      "yaxis": {
+        "align": false
+      }
     }
   ],
   "refresh": "10s",
@@ -1313,6 +1342,6 @@
   "timezone": "browser",
   "title": "Windows Node Copy",
   "uid": "fdezi5hdhp2wwc",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
