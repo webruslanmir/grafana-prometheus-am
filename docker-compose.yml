@@ -9,6 +9,8 @@ services:
       - 9090:9090
     volumes:
       - ./prometheus:/etc/prometheus
+      - ./prom_data:/prometheus/data
+
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     # depends_on:
@@ -40,3 +42,11 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
       - prometheus
+
+# volumes:
+#   prometheus_data:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /path/to/local/disk
