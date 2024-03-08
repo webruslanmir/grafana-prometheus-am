@@ -5,7 +5,7 @@ scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['223.169.100.101:9182']
+      - targets: ['223.169.100.101:9182', '223.169.100.102:9182']
 
 alerting:
   alertmanagers:

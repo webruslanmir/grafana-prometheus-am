@@ -402,7 +402,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "irate(windows_net_packets_outbound_discarded{instance=~\"$server\", nic!~\"isatap.+\"}[$interval]) + irate(windows_net_packets_outbound_errors{instance=~\"$server\"}[$interval])",
+          "expr": "irate(windows_net_packets_outbound_discarded_total{instance=~\"$server\", nic!~\"__.+\"}[$interval]) + irate(windows_net_packets_outbound_errors_total{instance=~\"$server\"}[$interval])",
           "functions": [],
           "group": {
             "filter": ""
@@ -433,7 +433,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "irate(windows_net_packets_received_discarded{instance=~\"$server\", nic!~\"isatap.+\"}[$interval]) + irate(windows_net_packets_received_errors{instance=~\"$server\"}[$interval])",
+          "expr": "irate(windows_net_packets_received_discarded_total{instance=~\"$server\", nic!~\"__.+\"}[$interval]) + irate(windows_net_packets_received_errors_total{instance=~\"$server\"}[$interval])",
           "functions": [],
           "group": {
             "filter": ""
@@ -1282,7 +1282,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "223.169.100.101:9182",
           "value": "223.169.100.101:9182"
         },
@@ -1311,7 +1311,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
