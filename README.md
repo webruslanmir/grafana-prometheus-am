@@ -1,5 +1,5 @@
 # prom-grafana
-Docker-compose grafana+prometheus project
+Docker-compose grafana+prometheus+am project
 
 
 ```docker-compose up -d```  
