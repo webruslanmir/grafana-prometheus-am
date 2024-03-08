@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v2.50.1
     mem_limit: 4G
     cpus: 2
     ports:
@@ -17,7 +17,7 @@ services:
     #   - alertmanager
 
   alertmanager:
-    image: prom/alertmanager
+    image: prom/alertmanager:v0.27.0
     ports:
       - 9093:9093
     volumes:
@@ -28,7 +28,7 @@ services:
       - prometheus
 
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:10.0.12
     mem_limit: 4G
     cpus: 2
     ports:
