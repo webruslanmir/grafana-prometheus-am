@@ -25,7 +25,7 @@ services:
       - prometheus
 
   grafana:
-    image: grafana/grafana:10.0.12-ubuntu
+    image: grafana/grafana:10.0.12
     mem_limit: 4G
     cpus: 2
     ports:
