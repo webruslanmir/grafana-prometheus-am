@@ -1,4 +1,4 @@
-# prom-grafana
+# Prometheus + Grafana + AlertManager project
 Docker-compose grafana+prometheus+am project
 
 
