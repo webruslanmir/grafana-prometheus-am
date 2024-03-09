@@ -2,20 +2,18 @@ global:
   scrape_interval: 15s
 
 scrape_configs:
-  - job_name: 'win_vms'
+  # - job_name: 'win_vms'
+  #   scrape_interval: 5s
+  #   static_configs:
+  #     - targets:
+  #         - '223.169.100.101:9182'
+
+  - job_name: 'prom'
     scrape_interval: 5s
     static_configs:
       - targets:
-          - '223.169.100.101:9182'
-          - '223.169.100.102:9182'
-          - '223.169.100.103:9182'
-          - '223.169.100.104:9182'
-          - '223.169.100.105:9182'
-          - '223.169.100.106:9182'
-          - '223.169.100.107:9182'
-          - '223.169.100.108:9182'
-          - '223.169.100.109:9182'
-          - '223.169.100.110:9182'
+          - 'prometheus:9090'
+
 alerting:
   alertmanagers:
     - static_configs:
