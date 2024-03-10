@@ -3,6 +3,7 @@ version: '3.8'
 services:
   prometheus:
     image: prom/prometheus:v2.50.1
+    image: prom/prometheus:v2.50.1
     mem_limit: 4G
     cpus: 2
     ports:
@@ -15,6 +16,7 @@ services:
 
   alertmanager:
     image: prom/alertmanager:v0.27.0
+    image: prom/alertmanager:v0.27.0
     ports:
       - 9093:9093
     volumes:
@@ -26,12 +28,13 @@ services:
 
   grafana:
     image: grafana/grafana:10.0.12
+    image: grafana/grafana:10.0.12
     mem_limit: 4G
     cpus: 2
     ports:
       - 3000:3000
     volumes:
-      # - ./grafana:/var/lib/grafana
+      # - ./grafana:/var/lib/grafana  # Папка где хранятся файлы БД grafana
       - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
     environment:
@@ -39,6 +42,14 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
       - prometheus
+
+# volumes:
+#   prometheus_data:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /path/to/local/disk
 
 # volumes:
 #   prometheus_data:
