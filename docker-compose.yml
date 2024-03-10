@@ -3,7 +3,6 @@ version: '3.8'
 services:
   prometheus:
     image: prom/prometheus:v2.50.1
-    image: prom/prometheus:v2.50.1
     mem_limit: 4G
     cpus: 2
     ports:
@@ -11,11 +10,11 @@ services:
     volumes:
       - ./prometheus:/etc/prometheus
       - ./prom_data:/prometheus/data
+
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
 
   alertmanager:
-    image: prom/alertmanager:v0.27.0
     image: prom/alertmanager:v0.27.0
     ports:
       - 9093:9093
@@ -27,7 +26,6 @@ services:
       - prometheus
 
   grafana:
-    image: grafana/grafana:10.0.12
     image: grafana/grafana:10.0.12
     mem_limit: 4G
     cpus: 2
@@ -42,14 +40,6 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
       - prometheus
-
-# volumes:
-#   prometheus_data:
-#     driver: local
-#     driver_opts:
-#       type: none
-#       o: bind
-#       device: /path/to/local/disk
 
 # volumes:
 #   prometheus_data:
