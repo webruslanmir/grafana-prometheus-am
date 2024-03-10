@@ -19,7 +19,7 @@ http://localhost:9093
  - ```./alertmanager``` - this folder contains configurations of monitored alerts and their thresholds
 
 ## Grafana
-This service is running on port 3000, to manage alerts you need to go to
+This service is running on port 3000, to monitor the metrics you need to go to  
 http://localhost:3000
 - ```./grafana/dashboards``` - the folder in which configurations for provisioning dashboards are configured through the config ```./grafana/dashboards/dashboard.yml```, all created JSON dashboards must be copied to this folder and restarted grafana for rereading configs
 - ```./grafana/datasources``` - the folder in which configurations for provisioning data sources are configured through the config ```./grafana/datasources.datasource.yml```, all created JSON data sources must be copied to this folder and restarted grafana for rereading configs
@@ -55,7 +55,7 @@ http://localhost:9093
  - ```./alertmanager``` - в данной папке находятся конфигурации наблюдаемых алертов и их пороги
 
 ## Grafana
-Данный сервис запущен на порту 3000, для управления алертами нужно перейти  
+Данный сервис запущен на порту 3000, для наблюдения за метриками нужно перейти  
 http://localhost:3000  
 - ```./grafana/dashboards``` - папка в которой настроены конфигурации о провижининге дашбордов через конфиг ```./grafana/dashboards/dashboard.yml```, все создаваемые JSON дашборды необходимо копировать в данную папку и перезапускать grafana для перечитывания конфигов
 - ```./grafana/datasources``` - папка в которой настроены конфигурации о провижининге датасоурсов через конфиг ```./grafana/datasources.datasource.yml```, все создаваемые JSON датасоурсы необходимо копировать в данную папку и перезапускать grafana для перечитывания конфигов
