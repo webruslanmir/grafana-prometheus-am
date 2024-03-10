@@ -10,7 +10,6 @@ services:
     volumes:
       - ./prometheus:/etc/prometheus
       - ./prom_data:/prometheus/data
-
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
 
